@@ -21,33 +21,39 @@
         }
         
         public Cliente getCliente(String id) {
-        Cliente foundClient = null; 
-        
-        for (Cliente cliente : clientes) {
-            if (cliente.getId() == id) {
-                foundClient = cliente;
+            Cliente clienteEncontrado = null;
+            boolean flag = false;
+            int i = 0;
+            
+            while (i < clientes.size() && !flag) {
+                if (clientes.get(i).getId().equals(id)) {
+                    clienteEncontrado = clientes.get(i); 
+                    flag = true;
             }
+            i++;
         }
-        return foundClient; 
+        return clienteEncontrado; 
         }
-
+        
         public ArrayList<Cliente> getAllClientes(){
         return clientes;
         }
 
-        public void ActualizarCliente(String id, Cliente clienteActualizado){
+       public void actualizarCliente(String id, Cliente clienteActualizado) {
+        int i = 0;
         boolean actualizado = false;
-        for (Cliente cliente : clientes) {
-            if (cliente.getId().equals(id)) {
-                clientes.set(clientes.idexOf(cliente), clienteActualizado);
-                actualizado = true;
+        while (i < clientes.size() && !actualizado) {
+            if (clientes.get(i).getId().equals(id)) {
+                clientes.set(i, clienteActualizado); 
+                actualizado = true; 
+                }
+                i++;
+            }
+            if (!actualizado) {
+                System.err.println("Cliente con ID " + id + " no encontrado");
             }
         }
-        if (!actualizado) {
-            System.err.println("Cliente con ID" + id + "no encontrado");
-        }
-        }
-        
+
         public void deleteCliente(String id) {
         boolean removed = clientes.removeIf(cliente -> cliente.getId().equals(id));//Usa la expresion "->" para indicar que elementos deben borrarse
             if (!removed) {
@@ -65,31 +71,36 @@
                 }
                 
         public Factura getFactura(String id) {
-            Factura foundFactura = null;
+            Factura facturaEncontrada = null;
+            boolean flag = false;
+            int i = 0;
             
-            for (Factura factura : facturas) {
-                if (factura.getId().equals(id)) {
-                    foundFactura = factura;
-                }
+            while (i < facturas.size() && !flag) {
+                if (facturas.get(i).getId().equals(id)) {
+                    facturaEncontrada = facturas.get(i); 
+                    flag = true;
             }
-            return foundFactura;
+            i++;
+        }
+        return facturaEncontrada; 
         }
         
         public ArrayList<Factura> getAllFacturas() {
-            return facturas;}
+            return facturas;
+        }
 
         public void actualizarFactura(String id, Factura facturaActualizada) {
-            boolean actualizado = false;
-            
-            for (Factura factura : facturas) {
-                if (factura.getId().equals(id)) {
-                    facturas.set(facturas.indexOf(factura), facturaActualizada);
-                    actualizado = true;
+        int i = 0;
+        boolean actualizado = false;
+        while (i < facturas.size() && !actualizado) {
+            if (facturas.get(i).getId().equals(id)) {
+                facturas.set(i, facturaActualizada); 
+                actualizado = true; 
                 }
+                i++;
             }
-            
             if (!actualizado) {
-                System.err.println("Error: Factura con ID " + id + " no encontrada.");
+                System.err.println("Factura con ID " + id + " no encontrada");
             }
         }
 
