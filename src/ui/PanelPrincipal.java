@@ -18,7 +18,7 @@ public class PanelPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Interfaz frame = new Interfaz();
+					PanelPrincipal frame = new PanelPrincipal();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,7 +30,7 @@ public class PanelPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Interfaz() {
+	public PanelPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
